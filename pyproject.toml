@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egospatial"
+version = "0.1.0"
+description = "Spatial-memory assisted causal next-action evaluation from EgoPlan and EPIC-KITCHENS"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "egospatial contributors"}]
+dependencies = ["Pillow>=10", "requests>=2.31"]
+
+[project.optional-dependencies]
+media = ["numpy>=1.24,<2", "opencv-python-headless>=4.8,<4.12"]
+download = ["pyarrow>=14", "huggingface-hub>=0.25"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+egospatial = "egospatial.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+egospatial = ["resources/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

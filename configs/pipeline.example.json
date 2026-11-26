@@ -1,0 +1,18 @@
+{
+  "dataset": "../data/egospatial-p30/benchmark/dataset.json",
+  "egoplan": "../data/egospatial-p30/metadata/egoplan_P30_111.json",
+  "epic": "../data/egospatial-p30/metadata/epic_actions.json",
+  "proposals": "../data/egospatial-p30/metadata/motion_proposals.json",
+  "recipe": "../data/egospatial-p30/metadata/recipe.json",
+  "video": "../data/raw/P30_111.MP4",
+  "clips": "../data/egospatial-p30/review/videos",
+  "extract": false,
+  "prepare_media": false,
+  "run": "../runs/my-model",
+  "review": "../artifacts/my-model",
+  "model": "YOUR_VISION_MODEL",
+  "backend": "responses",
+  "reasoning": "high",
+  "workers": 1,
+  "retries": 2
+}

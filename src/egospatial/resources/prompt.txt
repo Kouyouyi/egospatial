@@ -1,0 +1,13 @@
+请根据空间记忆、任务anchor、已经执行的动作标签和当前观察，预测当前之后的下一移动步骤或下一连续交互段。
+空间记忆每轮固定保留，全部来自任务开始前；物体当前状态以当前帧为准。
+第一轮任务anchor同时是当前帧，只提供一次。其后只追加已执行GT标签和每段结束后的新观察，不追加模型自己的预测。
+当前待预测动作、参考标签、操作明细及执行后的图片均不提供；最后一张图始终是当前帧。
+连续物体操作概括为一次interact；需要移动或明显调整视角时，预测对应移动方向，不输出后续整条路线。
+本版共有31个合法标签写法：6个单方向、interact，以及24个有序双方向写法。完整合法表在前文给出。
+单方向是forward、backward、left、right、up、down。相反方向分别为forward↔backward、left↔right、up↔down。
+双方向只能由两个不同且不相反的方向组成，用英文加号连接，如backward+up；顺序相反的up+backward也是合法写法，评分等价。
+interact单独使用；不得把interact与方向组合，不得重复方向、组合相反方向或输出三个方向。
+forward/backward表示向前/向后；left/right表示向左/向右转动或移动视角；up/down表示向上/向下调整视角。
+只输出JSON，字段为action_semantics和action_labels。action_semantics为动作语义，action_labels数组必须恰好包含1个标签字符串。
+若为双方向，输出一个组合字符串，不拆成两个数组项。输出格式示例：{"action_semantics":"向后退，同时向上看","action_labels":["backward+up"]}。
+评分只比较归一化后的方向集合，忽略组合书写顺序；具体动作语义文本不计分。

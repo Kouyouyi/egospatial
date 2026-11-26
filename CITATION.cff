@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite EgoPlan and EPIC-KITCHENS as well as this code when using the derived benchmark."
+title: egospatial
+type: software
+version: 0.1.0
+authors:
+  - name: egospatial contributors
+repository-code: https://github.com/Kouyouyi/egospatial
+license: MIT
